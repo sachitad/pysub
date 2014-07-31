@@ -1,0 +1,50 @@
+#!/usr/bin/env python3
+
+__author__ = 'sachitad'
+
+import sys
+
+from subtitle_downloader import SubtitleDownloader
+
+
+def main():
+    name = sys.argv[1]
+    downloader = SubtitleDownloader(name)
+
+    # Get the file type, if file doesn't exist show the error message and exit the program.
+    try:
+        video_type = downloader.get_file_type()
+    except OSError:
+        print('File not found.')
+        exit()
+
+    # Check if the file type is video or not
+    if video_type == 'video':
+        print('Searching subtitle...')
+        response = downloader.download_subtitle()
+
+        if response.status_code == 200:
+            print('Downloading subtitle...')
+            subtitle = response.text
+
+            name_without_extension = name.rsplit('.', 1)[0]  # Remove extension [For example: hello.avi would be hello]
+
+            with open(name_without_extension + '.srt', 'w') as f:
+                f.write(subtitle)
+            print('Subtitle successfully downloaded.')
+
+        elif response.status_code == 404:
+            print('Subtitle Not available.')
+
+        else:
+            print('API is not available now. Please try again later.')
+
+    else:
+        print('Input file is not a video file.')
+
+
+if __name__ == '__main__':
+    if len(sys.argv) == 2:
+        main()
+    else:
+        print('Provide the file as argument.')
