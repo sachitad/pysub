@@ -39,7 +39,7 @@ Usage
 ``sub file_name``
 
 
-.. image:: https://raw.githubusercontent.com/sachitad/sachitad.github.io/master/relative_path_pysub_example.png
+.. image:: https://raw.githubusercontent.com/sachitad/sachitad.github.io/master/pysub/relative_path_pysub_example.png
     :alt: Pysub demo
     :align: center
 
@@ -48,6 +48,6 @@ Usage
 **Absolute Path Demo:**
 
 
-.. image:: https://raw.githubusercontent.com/sachitad/sachitad.github.io/master/absolute_path_pysub_example.png
+.. image:: https://raw.githubusercontent.com/sachitad/sachitad.github.io/master/pysub/absolute_path_pysub_example.png
     :alt: Pysub Absolute Path demo
     :align: center
